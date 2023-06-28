@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
+import {createTheme, styled, ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -9,32 +9,29 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import {mainListItems, secondaryListItems} from './listItem';
 import {LogoutOutlined} from '@mui/icons-material';
-import {useLogout, useRegister} from "@/lib/auth";
-import {RegisterCredentialsDTO} from "@/features/authentification";
+import {useLogout} from "@/lib/auth";
+import {dashboardBody} from "@/features/admindashboard/components/dashboardBody";
+import {MainMenu} from "@/features/admindashboard/components/MainMenu";
 
 
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
+            WOTStore-GLG204-
             {new Date().getFullYear()}
             {'.'}
         </Typography>
     );
 }
+
 
 const drawerWidth: number = 240;
 
@@ -96,6 +93,7 @@ type LogoutProps = {
 export default function DashboardComponent({onLogout}: LogoutProps) {
     const [open, setOpen] = React.useState(true);
     const logout = useLogout();
+    const [body, setBody]: [JSX.Element, ((value: (((prevState: JSX.Element) => JSX.Element) | JSX.Element)) => void)] = React.useState(dashboardBody);
 
     function toggleDrawer() {
         setOpen(!open);
@@ -159,9 +157,7 @@ export default function DashboardComponent({onLogout}: LogoutProps) {
                     </Toolbar>
                     <Divider/>
                     <List component="nav">
-                        {mainListItems}
-                        <Divider sx={{my: 1}}/>
-                        {secondaryListItems}
+                        <MainMenu updateBody={setBody}/>
                     </List>
                 </Drawer>
                 <Box
@@ -178,40 +174,7 @@ export default function DashboardComponent({onLogout}: LogoutProps) {
                 >
                     <Toolbar/>
                     <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
-                        <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Grid item xs={12} md={8} lg={9}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    <div>toto</div>
-                                </Paper>
-                            </Grid>
-                            {/* Recent Deposits */}
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    <div>toto</div>
-                                </Paper>
-                            </Grid>
-                            {/* Recent Orders */}
-                            <Grid item xs={12}>
-                                <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                                    <div>toto</div>
-                                </Paper>
-                            </Grid>
-                        </Grid>
+                        {body}
                         <Copyright sx={{pt: 4}}/>
                     </Container>
                 </Box>

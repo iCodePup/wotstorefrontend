@@ -23,7 +23,7 @@ async function handleUserResponse(data: UserResponse) {
 async function userFn() {
     if (storage.getToken()) {
         const data = await getUser();
-        console.log(data)
+        //console.log(data)
         return data;
     }
     return null;

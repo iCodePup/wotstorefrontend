@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom';
-import DashboardComponent from "@/features/managething/components/DashboardComponent";
+import DashboardComponent from "@/features/admindashboard/components/DashboardComponent";
 
 
 export const Dashboard = () => {

@@ -1,5 +1,5 @@
 import {Route, Routes} from 'react-router-dom';
-import {Dashboard} from "@/features/managething/routes/Dashboard";
+import {Dashboard} from "@/features/admindashboard/routes/Dashboard";
 
 
 
