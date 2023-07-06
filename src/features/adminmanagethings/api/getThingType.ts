@@ -13,7 +13,7 @@ type UseThingTypesOptions = {
     config?: QueryConfig<QueryFnType>;
 };
 
-export const useThingTypes = ({ config }: UseThingTypesOptions = {}) => {
+export const useThingTypes = ({config}: UseThingTypesOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         ...config,
         queryKey: ['thingtypes'],
