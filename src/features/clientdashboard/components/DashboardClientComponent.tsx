@@ -17,9 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {LogoutOutlined} from '@mui/icons-material';
 import {useLogout} from "@/lib/auth";
-import {MainMenu} from "@/features/admindashboard/components/MainMenu";
-import DashboardBody from "@/features/admindashboard/components/DashboardBody";
 
+import DashboardClientBody from "@/features/clientdashboard/components/DashboardClientBody";
+import { MainMenuClient } from './MainMenuClient';
 
 function Copyright(props: any) {
     return (
@@ -90,10 +90,10 @@ type LogoutProps = {
     onLogout: () => void;
 };
 
-export default function DashboardComponent({onLogout}: LogoutProps) {
+export default function DashboardClientComponent({onLogout}: LogoutProps) {
     const [open, setOpen] = React.useState(true);
     const logout = useLogout();
-    const [body, setBody]: [JSX.Element, ((value: (((prevState: JSX.Element) => JSX.Element) | JSX.Element)) => void)] = React.useState(<DashboardBody/>);
+    const [body, setBody]: [JSX.Element, ((value: (((prevState: JSX.Element) => JSX.Element) | JSX.Element)) => void)] = React.useState(<DashboardClientBody/>);
 
     function toggleDrawer() {
         setOpen(!open);
@@ -157,7 +157,7 @@ export default function DashboardComponent({onLogout}: LogoutProps) {
                     </Toolbar>
                     <Divider/>
                     <List component="nav">
-                        <MainMenu updateBody={setBody}/>
+                        <MainMenuClient updateBody={setBody}/>
                     </List>
                 </Drawer>
                 <Box

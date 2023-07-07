@@ -13,6 +13,7 @@ import DefaultToolbar from "./DefaultToolbar";
 import {useEffect} from "react";
 
 function FullFeaturedCrudGrid({
+                                  readOnly,
                                   columns,
                                   rows,
                                   defaultPageSize,
@@ -79,55 +80,61 @@ function FullFeaturedCrudGrid({
         return updatedRow;
     };
 
-    const appendedColumns = [
-        ...columns,
-        {
-            field: "actions",
-            type: "actions",
-            headerName: "Actions",
-            width: 100,
-            cellClassName: "actions",
-            getActions: ({id}) => {
-                const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
+    let appendedColumns = []
+    if (!readOnly) {
+        appendedColumns = [
+            ...columns,
+            {
+                field: "actions",
+                type: "actions",
+                headerName: "Actions",
+                width: 100,
+                cellClassName: "actions",
+                getActions: ({id}) => {
+                    const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
 
-                if (isInEditMode) {
+                    if (isInEditMode) {
+                        return [
+                            <GridActionsCellItem
+                                icon={<SaveIcon/>}
+                                label="Save"
+                                onClick={handleSaveClick(id)}
+                            />,
+                            <GridActionsCellItem
+                                icon={<CancelIcon/>}
+                                label="Cancel"
+                                className="textPrimary"
+                                onClick={handleCancelClick(id)}
+                                color="inherit"
+                            />
+                        ];
+                    }
+
                     return [
                         <GridActionsCellItem
-                            icon={<SaveIcon/>}
-                            label="Save"
-                            onClick={handleSaveClick(id)}
+                            icon={<EditIcon/>}
+                            label="Edit"
+                            className="textPrimary"
+                            onClick={handleEditClick(id)}
+                            color="inherit"
                         />,
                         <GridActionsCellItem
-                            icon={<CancelIcon/>}
-                            label="Cancel"
-                            className="textPrimary"
-                            onClick={handleCancelClick(id)}
+                            icon={<DeleteIcon/>}
+                            label="Delete"
+                            onClick={handleDeleteClick(id)}
                             color="inherit"
                         />
                     ];
                 }
-
-                return [
-                    <GridActionsCellItem
-                        icon={<EditIcon/>}
-                        label="Edit"
-                        className="textPrimary"
-                        onClick={handleEditClick(id)}
-                        color="inherit"
-                    />,
-                    <GridActionsCellItem
-                        icon={<DeleteIcon/>}
-                        label="Delete"
-                        onClick={handleDeleteClick(id)}
-                        color="inherit"
-                    />
-                ];
             }
-        }
-    ];
+        ];
+    } else {
+        appendedColumns = columns
+    }
 
     //pagination
     const [pageSize, setPageSize] = React.useState(defaultPageSize);
+
 
     return (
         <DataGrid

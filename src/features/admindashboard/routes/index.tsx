@@ -1,12 +1,12 @@
 import {Route, Routes} from 'react-router-dom';
-import {Dashboard} from "@/features/admindashboard/routes/Dashboard";
+import {DashboardAdmin} from "@/features/admindashboard/routes/DashboardAdmin";
 
 
 
-export const ManageThingRoutes = () => {
+export const AdminDashboardRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Dashboard/>}/>
+            <Route path="/" element={<DashboardAdmin/>}/>
         </Routes>
     );
 };

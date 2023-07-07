@@ -50,7 +50,7 @@ export function ManageThingDataGrid() {
         {
             field: "description",
             headerName: "Description",
-            width: 200,
+            width: 300,
             headerAlign: "center",
             type: "string",
             align: "center",
@@ -59,7 +59,7 @@ export function ManageThingDataGrid() {
         {
             field: "prix",
             headerName: "Prix",
-            width: 200,
+            width: 20,
             headerAlign: "center",
             type: "integer",
             align: "center",
@@ -106,6 +106,7 @@ export function ManageThingDataGrid() {
         <Grid item xs={12}>
             <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
                 <FullFeaturedCrudGrid
+                    readOnly={false}
                     localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
                     columns={columns}
                     rows={thingsInStoreQuery.data}

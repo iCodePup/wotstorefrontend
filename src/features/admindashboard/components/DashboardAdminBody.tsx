@@ -7,7 +7,7 @@ import {Alert, CircularProgress} from "@mui/material";
 import {useClients} from "@/features/admindashboard/api/getClients";
 
 
-export default function DashboardBody() {
+export default function DashboardAdminBody() {
 
     const thingsInStoreQuery = useThingsInStore();
     const clientsQuery = useClients();

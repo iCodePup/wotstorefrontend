@@ -1,10 +1,10 @@
 
-import {ManageThingRoutes} from "@/features/admindashboard";
+import {AdminDashboardRoutes} from "@/features/admindashboard";
 
 export const protectedAdminRoutes = [
     {
         path: '/*',
-        element: <ManageThingRoutes/>,
+        element: <AdminDashboardRoutes/>,
     },
 ];
 

@@ -4,18 +4,17 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import {useEffect} from "react";
-import { ManageThingDataGrid } from '@/features/adminmanagethings/components/ManageThingDataGrid';
-import DashboardBody from './DashboardBody';
+import EmojiObjects from '@mui/icons-material/EmojiObjects';
+import DashboardClientBody from './DashboardClientBody';
+import {ClientThingInStoreDataGrid} from '@/features/clientthinginstore/components/ClientThingInStoreDataGrid';
 
 
 // @ts-ignore
-export function MainMenu({updateBody}) {
+export function MainMenuClient({updateBody}) {
 
     return (<React.Fragment>
         <ListItemButton onClick={(event) => {
-            updateBody(<DashboardBody/>)
+            updateBody(<DashboardClientBody/>)
         }}>
             <ListItemIcon>
                 <DashboardIcon/>
@@ -23,20 +22,20 @@ export function MainMenu({updateBody}) {
             <ListItemText primary="Accueil"/>
         </ListItemButton>
         <ListItemButton onClick={(event) => {
-            updateBody(<ManageThingDataGrid/>)
+            updateBody(<ClientThingInStoreDataGrid/>)
         }}>
             <ListItemIcon>
                 <ShoppingCartIcon/>
             </ListItemIcon>
-            <ListItemText primary="Gestion du magasin"/>
+            <ListItemText primary="Consulter la boutique"/>
         </ListItemButton>
         <ListItemButton onClick={(event) => {
             updateBody(<div>todo</div>)
         }}>
             <ListItemIcon>
-                <PeopleIcon/>
+                <EmojiObjects/>
             </ListItemIcon>
-            <ListItemText primary="Gestion des clients"/>
+            <ListItemText primary="Mes objets connectés"/>
         </ListItemButton>
     </React.Fragment>)
 }
