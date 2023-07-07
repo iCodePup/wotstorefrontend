@@ -6,8 +6,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import {useEffect} from "react";
-import {dashboardBody} from "@/features/admindashboard/components/dashboardBody";
 import { ManageThingDataGrid } from '@/features/adminmanagethings/components/ManageThingDataGrid';
+import DashboardBody from './DashboardBody';
 
 
 // @ts-ignore
@@ -15,7 +15,7 @@ export function MainMenu({updateBody}) {
 
     return (<React.Fragment>
         <ListItemButton onClick={(event) => {
-            updateBody(dashboardBody)
+            updateBody(<DashboardBody/>)
         }}>
             <ListItemIcon>
                 <DashboardIcon/>

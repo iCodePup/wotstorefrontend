@@ -17,8 +17,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {LogoutOutlined} from '@mui/icons-material';
 import {useLogout} from "@/lib/auth";
-import {dashboardBody} from "@/features/admindashboard/components/dashboardBody";
 import {MainMenu} from "@/features/admindashboard/components/MainMenu";
+import DashboardBody from "@/features/admindashboard/components/DashboardBody";
 
 
 function Copyright(props: any) {
@@ -93,7 +93,7 @@ type LogoutProps = {
 export default function DashboardComponent({onLogout}: LogoutProps) {
     const [open, setOpen] = React.useState(true);
     const logout = useLogout();
-    const [body, setBody]: [JSX.Element, ((value: (((prevState: JSX.Element) => JSX.Element) | JSX.Element)) => void)] = React.useState(dashboardBody);
+    const [body, setBody]: [JSX.Element, ((value: (((prevState: JSX.Element) => JSX.Element) | JSX.Element)) => void)] = React.useState(<DashboardBody/>);
 
     function toggleDrawer() {
         setOpen(!open);

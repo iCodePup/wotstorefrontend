@@ -4,7 +4,7 @@ import {ExtractFnReturnType, QueryConfig} from "@/lib/react-query";
 import {useQuery} from "@tanstack/react-query";
 
 export const getThingTypes = (): Promise<ThingType[]> => {
-    return axios.get('/thing');
+    return axios.get('/thing/type');
 };
 
 type QueryFnType = typeof getThingTypes;
