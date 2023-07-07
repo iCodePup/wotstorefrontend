@@ -20,10 +20,10 @@ export const usePurchaseThingInStore = ({config}: UsePurchaseThingInStoreOptions
     const {addNotification} = useNotificationStore();
     const mutation = useMutation<boolean, any, ThingInStore>(purchaseThingInStore, {
         onMutate: async (deletedThingInStore) => {
-            await queryClient.cancelQueries(['thinginstore']);
-            const previousThingInStore = queryClient.getQueryData<ThingInStore[]>(['thinginstore']);
+            await queryClient.cancelQueries(['availablethinginstore']);
+            const previousThingInStore = queryClient.getQueryData<ThingInStore[]>(['availablethinginstore']);
             queryClient.setQueryData(
-                ['thinginstore'],
+                ['availablethinginstore'],
                 previousThingInStore?.filter(
                     (thingInStore) => thingInStore.id !== deletedThingInStore.id
                 )
@@ -33,11 +33,11 @@ export const usePurchaseThingInStore = ({config}: UsePurchaseThingInStoreOptions
         },
         onError: (error, _, context: any) => {
             if (context?.previousThingInStore) {
-                queryClient.setQueryData(['thinginstore'], context.previousThingInStore);
+                queryClient.setQueryData(['availablethinginstore'], context.previousThingInStore);
             }
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['thinginstore']);
+            queryClient.invalidateQueries(['availablethinginstore']);
             addNotification({
                 type: 'success',
                 title: "Merci pour votre achat. Vous pouvez désormais retrouver votre objet connecté dans votre liste",

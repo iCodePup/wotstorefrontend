@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import {useThingsInStore} from "@/features/adminmanagethings/api/getThingInStore";
+import {useThingsInStore} from "@/features/clientdashboard/api/getThingInStore";
 
 import {Alert, CircularProgress} from "@mui/material";
 import {useUser} from "@/lib/auth";

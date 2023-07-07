@@ -22,7 +22,9 @@ export default function DashboardAdminBody() {
     if (!thingsInStoreQuery.data) return null;
     if (!clientsQuery.data) return null;
 
-    const selledThingInStore = thingsInStoreQuery.data.filter(item => item.client !== undefined);
+    const selledThingInStore = thingsInStoreQuery.data.filter(item =>
+        item.client !== null
+    );
 
     return (<Grid container spacing={3}>
         {/* Chart */}

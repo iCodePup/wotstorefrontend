@@ -1,5 +1,5 @@
 import {axios} from "@/lib/axios";
-import {ThingInStore, ThingType} from "@/features/clientthinginstore/types";
+import {ThingInStore} from "@/features/clientthinginstore/types";
 import {ExtractFnReturnType, QueryConfig} from "@/lib/react-query";
 import {useQuery} from "@tanstack/react-query";
 
@@ -16,7 +16,7 @@ type UseThingsInStoreOptions = {
 export const useThingsInStore = ({config}: UseThingsInStoreOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         ...config,
-        queryKey: ['thinginstore'],
+        queryKey: ['availablethinginstore'],
         queryFn: () => getThingsInStore(),
     });
 };

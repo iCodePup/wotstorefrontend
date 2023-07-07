@@ -16,7 +16,7 @@ type UseThingsInStoreOptions = {
 export const useThingsInStore = ({config}: UseThingsInStoreOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         ...config,
-        queryKey: ['thinginstore'],
+        queryKey: ['availablethinginstore'],
         queryFn: () => getThingsInStore(),
     });
 };
