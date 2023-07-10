@@ -6,8 +6,6 @@ import {MutationConfig, queryClient} from "@/lib/react-query";
 
 
 export const purchaseThingInStore = (t: ThingInStore): Promise<boolean> => {
-        console.log("REQUEST WITH ID")
-        console.log(t)
         return axios.post('/client/thinginstore', t)
     }
 ;

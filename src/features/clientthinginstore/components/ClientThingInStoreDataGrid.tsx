@@ -9,6 +9,14 @@ import {useThingsInStore} from "@/features/clientthinginstore/api/getThingInStor
 import ReadOnlyToolbar from "@/components/datagrid/ReadOnlyToolbar";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import {usePurchaseThingInStore} from "@/features/clientthinginstore/api/purchaseThingInStore";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import {TransitionProps} from "@mui/material/transitions";
+import Slide from "@mui/material/Slide";
 
 
 export function ClientThingInStoreDataGrid() {
@@ -16,6 +24,8 @@ export function ClientThingInStoreDataGrid() {
     const thingTypesQuery = useThingTypes();
     const thingsInStoreQuery = useThingsInStore();
     const purchaseThingInStoreMutation = usePurchaseThingInStore();
+    const [open, setOpen] = React.useState(false);
+    const [currentRow, setRow] = React.useState();
 
     if (thingsInStoreQuery.isLoading || thingTypesQuery.isLoading) {
         return (
@@ -59,7 +69,7 @@ export function ClientThingInStoreDataGrid() {
         {
             field: "prix",
             headerName: "Prix",
-            width: 20,
+            width: 25,
             headerAlign: "center",
             type: "integer",
             align: "center",
@@ -67,11 +77,21 @@ export function ClientThingInStoreDataGrid() {
         }
     ];
 
-    const handleBuyClick = (row: any) => async () => {
-        console.log("BUT" + row)
-        await purchaseThingInStoreMutation.mutateAsync(row.row)
+    const handleClickOpen = (row: any) => async () => {
+        setOpen(true);
+        setRow(row.row);
     };
 
+    const handleBuyClick = ()  => {
+        if (currentRow) {
+             purchaseThingInStoreMutation.mutateAsync(currentRow)
+        }
+        setOpen(false);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const newColmuns = [
         ...columns,
@@ -82,31 +102,12 @@ export function ClientThingInStoreDataGrid() {
             width: 100,
             cellClassName: "actions",
             getActions: (row: any) => {
-                //const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-                //
-                // if (isInEditMode) {
-                //     return [
-                //         <GridActionsCellItem
-                //             icon={<SaveIcon/>}
-                //             label="Save"
-                //             onClick={console.log(id)}
-                //         />,
-                //         <GridActionsCellItem
-                //             icon={<CancelIcon/>}
-                //             label="Cancel"
-                //             className="textPrimary"
-                //             onClick={console.log(id)}
-                //             color="inherit"
-                //         />
-                //     ];
-                // }
-
                 return [
                     <GridActionsCellItem
                         icon={<ShoppingCart/>}
                         label="Edit"
                         className="textPrimary"
-                        onClick={handleBuyClick(row)}
+                        onClick={handleClickOpen(row)}
                         color="inherit"
                     />
                 ];
@@ -119,6 +120,23 @@ export function ClientThingInStoreDataGrid() {
         {/* Nb d'objets à la vente */}
         <Grid item xs={12}>
             <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
+                <Dialog
+                    open={open}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle>{"Confirmation"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description">
+                            Confirmez-vous votre achat ?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Non</Button>
+                        <Button onClick={handleBuyClick}>Oui</Button>
+                    </DialogActions>
+                </Dialog>
                 <FullFeaturedCrudGrid
                     readOnly={true}
                     localeText={frFR.components.MuiDataGrid.defaultProps.localeText}

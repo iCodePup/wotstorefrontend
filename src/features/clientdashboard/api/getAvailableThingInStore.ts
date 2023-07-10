@@ -3,20 +3,20 @@ import {ThingInStore, ThingType} from "@/features/adminmanagethings/types";
 import {ExtractFnReturnType, QueryConfig} from "@/lib/react-query";
 import {useQuery} from "@tanstack/react-query";
 
-export const getThingsInStore = (): Promise<ThingInStore[]> => {
+export const getAvailableThingsInStore = (): Promise<ThingInStore[]> => {
     return axios.get('/thinginstore/available');
 };
 
-type QueryFnType = typeof getThingsInStore;
+type QueryFnType = typeof getAvailableThingsInStore;
 
-type UseThingsInStoreOptions = {
+type UseAvailableThingsInStoreOptions = {
     config?: QueryConfig<QueryFnType>;
 };
 
-export const useThingsInStore = ({config}: UseThingsInStoreOptions = {}) => {
+export const useAvailableThingsInStore = ({config}: UseAvailableThingsInStoreOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         ...config,
         queryKey: ['availablethinginstore'],
-        queryFn: () => getThingsInStore(),
+        queryFn: () => getAvailableThingsInStore(),
     });
 };

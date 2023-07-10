@@ -7,7 +7,7 @@ import {useThingTypes} from "@/features/adminmanagethings/api/getThingType";
 import {CircularProgress} from "@mui/material";
 import {useThingsInStore} from "@/features/adminmanagethings/api/getThingInStore";
 import {useCreateThingInStore} from "@/features/adminmanagethings/api/createThingInStore";
-import { useDeleteThingInStore } from '../api/deleteThingInStore';
+import {useDeleteThingInStore} from '../api/deleteThingInStore';
 
 
 export function ManageThingDataGrid() {
@@ -26,6 +26,7 @@ export function ManageThingDataGrid() {
     }
     if (!thingsInStoreQuery.data) return null;
     if (!thingTypesQuery.data) return null;
+
 
     const columns = [
         {
@@ -59,7 +60,7 @@ export function ManageThingDataGrid() {
         {
             field: "prix",
             headerName: "Prix",
-            width: 20,
+            width: 25,
             headerAlign: "center",
             type: "integer",
             align: "center",
@@ -73,6 +74,11 @@ export function ManageThingDataGrid() {
             type: "string",
             align: "center",
             editable: false,
+            renderCell: ({value}: { value: any }) => {
+                if( value) {
+                    return value.firstName + " " + value.lastName + " (" + value.email + ")"
+                }
+            }
         }
     ];
     //
