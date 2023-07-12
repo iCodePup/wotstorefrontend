@@ -20,11 +20,29 @@ async function handleUserResponse(data: UserResponse) {
     return user;
 }
 
+const parseJwt = (token: string) => {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+};
+
+
 async function userFn() {
+
     if (storage.getToken()) {
-        const data = await getUser();
-        //console.log(data)
-        return data;
+        const user = storage.getToken()
+        const decodedJwt = parseJwt(storage.getToken());
+        if (decodedJwt.exp * 1000 < Date.now()) {
+            console.log("Token expired...logout");
+            await logoutFn();
+        } else {
+            const data = await getUser();
+            //https://www.bezkoder.com/react-logout-token-expired/
+            return data;
+        }
     }
     return null;
 }
