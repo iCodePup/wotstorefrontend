@@ -7,7 +7,7 @@ export type ThingType = {
 
 export type ThingInStore = {
     id: number;
-    thingId: string;
+    thingTypeId: string;
     name: string;
     description: string;
     prix: number;

@@ -39,7 +39,7 @@ export function ClientThingInStoreDataGrid() {
 
     const columns = [
         {
-            field: "thingId",
+            field: "thingTypeId",
             headerName: "Type d'objet connecté",
             width: 200,
             headerAlign: "center",

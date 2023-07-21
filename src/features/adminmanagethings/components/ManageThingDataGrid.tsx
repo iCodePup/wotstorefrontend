@@ -30,7 +30,7 @@ export function ManageThingDataGrid() {
 
     const columns = [
         {
-            field: "thingId",
+            field: "thingTypeId",
             headerName: "Type d'objet connecté",
             width: 200,
             headerAlign: "center",
@@ -93,7 +93,7 @@ export function ManageThingDataGrid() {
             id: id,
             name: updatedRow.name,
             prix: updatedRow.prix,
-            thingId: updatedRow.thingId,
+            thingTypeId: updatedRow.thingTypeId,
 
         });
     };

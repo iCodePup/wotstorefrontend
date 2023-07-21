@@ -6,7 +6,7 @@ import {useMutation} from "@tanstack/react-query";
 
 export type ThingInStoreDTO = {
     id: number;
-    thingId: string;
+    thingTypeId: string;
     name: string;
     description: string;
     prix: number;
