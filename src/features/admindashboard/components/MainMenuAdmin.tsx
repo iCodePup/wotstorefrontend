@@ -30,13 +30,13 @@ export function MainMenuAdmin({updateBody}) {
             </ListItemIcon>
             <ListItemText primary="Gestion du magasin"/>
         </ListItemButton>
-        <ListItemButton onClick={(event) => {
-            updateBody(<div>todo</div>)
-        }}>
-            <ListItemIcon>
-                <PeopleIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Gestion des clients"/>
-        </ListItemButton>
+        {/*<ListItemButton onClick={(event) => {*/}
+        {/*    updateBody(<div>todo</div>)*/}
+        {/*}}>*/}
+        {/*    <ListItemIcon>*/}
+        {/*        <PeopleIcon/>*/}
+        {/*    </ListItemIcon>*/}
+        {/*    <ListItemText primary="Gestion des clients"/>*/}
+        {/*</ListItemButton>*/}
     </React.Fragment>)
 }

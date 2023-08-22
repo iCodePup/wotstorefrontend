@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import {frFR} from "@mui/x-data-grid";
+import {frFR, GridPreProcessEditCellProps} from "@mui/x-data-grid";
 import FullFeaturedCrudGrid from "@/components/datagrid";
 import {useThingTypes} from "@/features/adminmanagethings/api/getThingType";
 import {CircularProgress} from "@mui/material";
@@ -81,6 +81,8 @@ export function ManageThingDataGrid() {
             }
         }
     ];
+
+
     //
     // @ts-ignore
     const onSaveRow = async (id, updatedRow, oldRow, oldRows) => {
