@@ -4,9 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import {useEffect} from "react";
-import { ManageThingDataGrid } from '@/features/adminmanagethings/components/ManageThingDataGrid';
+import {ManageThingDataGrid} from '@/features/adminmanagethings/components/ManageThingDataGrid';
 import DashboardAdminBody from './DashboardAdminBody';
 
 

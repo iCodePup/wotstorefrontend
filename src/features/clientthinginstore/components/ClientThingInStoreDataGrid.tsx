@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import {frFR, GridActionsCellItem, GridRowModes} from "@mui/x-data-grid";
+import {frFR, GridActionsCellItem} from "@mui/x-data-grid";
 import FullFeaturedCrudGrid from "@/components/datagrid";
 import {useThingTypes} from "@/features/clientthinginstore/api/getThingType";
 import {CircularProgress} from "@mui/material";
@@ -15,8 +15,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
-import {TransitionProps} from "@mui/material/transitions";
-import Slide from "@mui/material/Slide";
 
 
 export function ClientThingInStoreDataGrid() {

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import {frFR, GridPreProcessEditCellProps} from "@mui/x-data-grid";
+import {frFR} from "@mui/x-data-grid";
 import FullFeaturedCrudGrid from "@/components/datagrid";
 import {useThingTypes} from "@/features/adminmanagethings/api/getThingType";
 import {CircularProgress} from "@mui/material";
 import {useThingsInStore} from "@/features/adminmanagethings/api/getThingInStore";
 import {useCreateThingInStore} from "@/features/adminmanagethings/api/createThingInStore";
 import {useDeleteThingInStore} from '../api/deleteThingInStore';
-
 
 export function ManageThingDataGrid() {
 
@@ -56,6 +55,7 @@ export function ManageThingDataGrid() {
             type: "string",
             align: "center",
             editable: true,
+
         },
         {
             field: "prix",
@@ -75,7 +75,7 @@ export function ManageThingDataGrid() {
             align: "center",
             editable: false,
             renderCell: ({value}: { value: any }) => {
-                if( value) {
+                if (value) {
                     return value.firstName + " " + value.lastName + " (" + value.email + ")"
                 }
             }
@@ -113,17 +113,17 @@ export function ManageThingDataGrid() {
         {/* Nb d'objets à la vente */}
         <Grid item xs={12}>
             <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                <FullFeaturedCrudGrid
-                    readOnly={false}
-                    localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
-                    columns={columns}
-                    rows={thingsInStoreQuery.data}
-                    defaultPageSize={undefined}
-                    onSaveRow={onSaveRow}
-                    onDeleteRow={onDeleteRow}
-                    createRowData={undefined}
-                    onProcessRowUpdateError={undefined}
-                />
+                    <FullFeaturedCrudGrid
+                        readOnly={false}
+                        localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
+                        columns={columns}
+                        rows={thingsInStoreQuery.data}
+                        defaultPageSize={undefined}
+                        onSaveRow={onSaveRow}
+                        onDeleteRow={onDeleteRow}
+                        createRowData={undefined}
+                        onProcessRowUpdateError={undefined}
+                    />
             </Paper>
         </Grid>
     </Grid>)

@@ -1,5 +1,5 @@
 import {axios} from "@/lib/axios";
-import {ThingInStore, ThingType} from "@/features/adminmanagethings/types";
+import {ThingInStore} from "@/features/adminmanagethings/types";
 import {ExtractFnReturnType, QueryConfig} from "@/lib/react-query";
 import {useQuery} from "@tanstack/react-query";
 

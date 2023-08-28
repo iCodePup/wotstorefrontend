@@ -1,4 +1,3 @@
-
 import {AdminDashboardRoutes} from "@/features/admindashboard";
 
 export const protectedAdminRoutes = [

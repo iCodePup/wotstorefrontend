@@ -10,16 +10,13 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {LogoutOutlined} from '@mui/icons-material';
 import {useLogout} from "@/lib/auth";
 
 import DashboardClientBody from "@/features/clientdashboard/components/DashboardClientBody";
-import { MainMenuClient } from './MainMenuClient';
+import {MainMenuClient} from './MainMenuClient';
 
 function Copyright(props: any) {
     return (
