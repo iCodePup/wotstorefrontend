@@ -69,14 +69,14 @@ export function ManageThingDataGrid() {
         {
             field: "client",
             headerName: "Client",
-            width: 200,
+            width: 250,
             headerAlign: "center",
             type: "string",
             align: "center",
             editable: false,
             renderCell: ({value}: { value: any }) => {
                 if (value) {
-                    return value.firstName + " " + value.lastName + " (" + value.email + ")"
+                    return value.lastName + "(" + value.email + ")"
                 }
             }
         }
